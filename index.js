@@ -23,10 +23,14 @@ function afficherTravaux(travaux) {
   }
 
   const allSpace = document.createElement("button");
-  const h2Element = document.createElement("h2");
-  h2Element.textContent = "Tous";
+  allSpace.textContent = "Tous";
 
-  allSpace.appendChild(h2Element);
+  allSpace.addEventListener("click", function () {
+    const allSpaceArray = Array.from(travaux);
+
+    document.querySelector("#portfolio").innerHTML = "";
+    afficherTravaux(allSpaceArray);
+  });
 
   allSpace.addEventListener("click", function () {
     const allCategory = [];
