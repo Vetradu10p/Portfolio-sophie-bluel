@@ -4,24 +4,35 @@ const travaux = await works.json();
 const categoriesAPI = await fetch("http://localhost:5678/api/categories");
 const categories = await categoriesAPI.json();
 
-const portfolioElement = document.querySelector("#portfolio");
+// Création div pour contenir les boutons
+document.addEventListener("DOMContentLoaded", function () {
+  const premierElement = document.querySelector(".title");
+  const dernierElement = document.querySelector(".gallery");
+
+  const divElement = document.createElement("div");
+  divElement.className = "container";
+
+  premierElement.parentNode.insertBefore(divElement, dernierElement);
+});
+
+// Afficher travaux
+const sectionFiches = document.querySelector(".gallery");
+const portfolioElement = document.querySelector(".gallery");
 
 function afficherTravaux(travaux) {
   for (let i = 0; i < travaux.length; i++) {
-    const projet = travaux[i];
-
-    const sectionFiches = document.querySelector(".gallery");
     const projetElement = document.createElement("figure");
     const imageElement = document.createElement("img");
-    imageElement.src = projet.imageUrl;
+    imageElement.src = travaux[i].imageUrl;
     const titreElement = document.createElement("figcaption");
-    titreElement.innerText = projet.title;
+    titreElement.innerText = travaux[i].title;
 
-    sectionFiches.appendChild(projetElement);
     projetElement.appendChild(imageElement);
     projetElement.appendChild(titreElement);
+    sectionFiches.appendChild(projetElement);
   }
 }
+afficherTravaux(travaux);
 
 //  Création bouton "Tous"
 const allSpace = document.createElement("button");
@@ -29,8 +40,8 @@ allSpace.textContent = "Tous";
 
 //  Fonction Trier "Tous"
 allSpace.addEventListener("click", () => {
-  portfolioElement.innerHTML = "";
-  afficherTravaux(allSpace);
+  sectionFiches.innerHTML = "";
+  afficherTravaux(travaux);
 });
 
 // Création trier "Objets"
@@ -39,7 +50,7 @@ objectButtonElement.textContent = categories[0].name;
 
 //  Fonction trier "Objets"
 objectButtonElement.addEventListener("click", () => {
-  portfolioElement.innerHTML = "";
+  sectionFiches.innerHTML = "";
   const filterObjects = travaux.filter(function (travaux) {
     return travaux.category.id === categories[0].id;
   });
@@ -52,27 +63,49 @@ appartmentsSpace.textContent = categories[1].name;
 
 //  Fonction trier "Appartement"
 appartmentsSpace.addEventListener("click", () => {
-  portfolioElement.innerHTML = "";
+  sectionFiches.innerHTML = "";
   const filteredAppartements = travaux.filter(function (travaux) {
     return travaux.category.id === categories[1].id;
   });
   afficherTravaux(filteredAppartements);
 });
 
-//   Création bouton "Hôtels & restaurants"
+//  Création bouton "Hôtels & restaurants"
 const hostelsSpace = document.createElement("button");
 hostelsSpace.textContent = categories[2].name;
 
 hostelsSpace.addEventListener("click", () => {
-  portfolioElement.innerHTML = "";
+  sectionFiches.innerHTML = "";
   const filteredHostel = travaux.filter(function (travaux) {
     return travaux.category.id === categories[2].id;
   });
   afficherTravaux(filteredHostel);
 });
 
-// Affichage boutton "Tous"
-document.querySelector("#portfolio").appendChild(allSpace);
-document.querySelector("#portfolio").appendChild(objectButtonElement);
-document.querySelector("#portfolio").appendChild(appartmentsSpace);
-document.querySelector("#portfolio").appendChild(hostelsSpace);
+// Affichage bouttons
+document.querySelector(".container").appendChild(allSpace);
+document.querySelector(".container").appendChild(objectButtonElement);
+document.querySelector(".container").appendChild(appartmentsSpace);
+document.querySelector(".container").appendChild(hostelsSpace);
+
+// Selection boutons cliqué
+const buttons = document.querySelectorAll("button");
+console.log(buttons);
+function clickedButton(event) {
+  buttons.forEach((button) => {
+    button.classList.remove("selected");
+  });
+  event.target.classList.add("selected");
+}
+buttons.forEach((button) => {
+  button.addEventListener("click", clickedButton);
+});
+
+// Formulaire
+const inputEmail = document.querySelector("#emailLogin");
+const inputPassword = document.querySelector("#passwordLogin");
+const buttonSeConnecter = document.querySelector("#buttonLogin");
+
+console.log(inputEmail);
+console.log(inputPassword);
+console.log(inputEmail);
