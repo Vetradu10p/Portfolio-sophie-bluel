@@ -212,30 +212,30 @@ button {
 }
 
 .loginMain {
-	display: flex;
-	justify-content: center;
-	align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .totalLoginContainer {
-	display: block;
-	border: 1px solid black;
-	width: 100vh;
-	height: 75vh;
+    display: block;
+    border: 1px solid black;
+    width: 100vh;
+    height: 75vh;
 }
 
 .login {
-	padding: auto;
+    padding: auto;
 }
 
 .divForm label {
-	display: block;
-	
+    display: block;
+    
 }
 
 .divForm {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	border: 2px solid red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid red;
 }

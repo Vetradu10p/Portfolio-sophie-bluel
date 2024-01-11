@@ -5,15 +5,13 @@ const categoriesAPI = await fetch("http://localhost:5678/api/categories");
 const categories = await categoriesAPI.json();
 
 // Création div pour contenir les boutons
-document.addEventListener("DOMContentLoaded", function () {
-  const premierElement = document.querySelector(".title");
-  const dernierElement = document.querySelector(".gallery");
+const premierElement = document.querySelector(".title");
+const dernierElement = document.querySelector(".gallery");
 
-  const divElement = document.createElement("div");
-  divElement.className = "container";
+const divElement = document.createElement("div");
+divElement.className = "container";
 
-  premierElement.parentNode.insertBefore(divElement, dernierElement);
-});
+premierElement.parentNode.insertBefore(divElement, dernierElement);
 
 // Afficher travaux
 const sectionFiches = document.querySelector(".gallery");
@@ -105,7 +103,3 @@ buttons.forEach((button) => {
 const inputEmail = document.querySelector("#emailLogin");
 const inputPassword = document.querySelector("#passwordLogin");
 const buttonSeConnecter = document.querySelector("#buttonLogin");
-
-console.log(inputEmail);
-console.log(inputPassword);
-console.log(inputEmail);
