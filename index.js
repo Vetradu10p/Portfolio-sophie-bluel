@@ -1,3 +1,5 @@
+import { pageLogin } from "./pageLogin.js";
+
 const works = await fetch("http://localhost:5678/api/works");
 const travaux = await works.json();
 
@@ -88,7 +90,6 @@ document.querySelector(".container").appendChild(hostelsSpace);
 
 // Selection boutons cliqué
 const buttons = document.querySelectorAll("button");
-console.log(buttons);
 function clickedButton(event) {
   buttons.forEach((button) => {
     button.classList.remove("selected");
@@ -98,8 +99,4 @@ function clickedButton(event) {
 buttons.forEach((button) => {
   button.addEventListener("click", clickedButton);
 });
-
-// Formulaire
-const inputEmail = document.querySelector("#emailLogin");
-const inputPassword = document.querySelector("#passwordLogin");
-const buttonSeConnecter = document.querySelector("#buttonLogin");
+pageLogin();
