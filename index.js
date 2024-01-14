@@ -1,5 +1,3 @@
-import { pageLogin } from "./pageLogin.js";
-
 const works = await fetch("http://localhost:5678/api/works");
 const travaux = await works.json();
 
@@ -99,4 +97,3 @@ function clickedButton(event) {
 buttons.forEach((button) => {
   button.addEventListener("click", clickedButton);
 });
-pageLogin();
