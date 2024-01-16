@@ -33,6 +33,14 @@ document.addEventListener("DOMContentLoaded", () => {
       .then((data) => {
         console.log(data);
 
+        let keyId = data.userId;
+        let tokenId = data.token;
+
+        window.localStorage.setItem("userId", keyId);
+        window.localStorage.setItem("token", tokenId);
+
+        console.log(apiUrl);
+
         feedback.textContent = "Connexion réussie !";
       })
       .catch((error) => {

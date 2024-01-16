@@ -97,3 +97,28 @@ function clickedButton(event) {
 buttons.forEach((button) => {
   button.addEventListener("click", clickedButton);
 });
+
+// Connexion
+document.addEventListener("DOMContentLoaded", function () {
+  const identifiants = window.localStorage.getItem("userId");
+  const password = window.localStorage.getItem("token");
+
+  function connexion(identifiants, password) {
+    let status;
+
+    if (identifiants != "" && password != "") {
+      status = "connected";
+    } else {
+      status = "not connected";
+    }
+    const navbar = document.getElementById("navbar");
+
+    if (status == "connected") {
+      navbar.style.display = "block";
+    } else {
+      null;
+    }
+  }
+});
+
+// Modal + Formulaire
