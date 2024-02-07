@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
     })
       .then((response) => {
         if (response.status === 200) {
-          window.location.href = "./index.html";
+          window.location.href = "./admin.html";
           return response.json();
         } else if (response.status === 401) {
           throw new Error("identifiants incorrects");
@@ -51,3 +51,8 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // S0phie
+
+// eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiO…jU1fQ.TU2ah-GO7UpwkoZc2deyahKX_hxUV91fyVLNMkh_dYY
+// eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
+//   .eyJ1c2VySWQiOjEsImlhdCI6MTcwNzEyNTI1NSwiZXhwIjoxNzA3MjExNjU1fQ.TU2ah -
+//   GO7UpwkoZc2deyahKX_hxUV91fyVLNMkh_dYY;

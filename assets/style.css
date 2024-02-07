@@ -124,8 +124,27 @@ li:hover {
 }
 #portfolio h2 {
 	text-align: center;
+	margin-right: 30px;
 	margin-bottom: 1em;
 }
+
+.projets-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.title {
+	margin-right: 10px;
+}
+
+.projets-container .editionMode {
+	border: none;
+	background-color: white;
+	color: black;
+	margin-top: -30px;
+}
+
 .gallery {
 	width: 100%;
 	display: grid;
@@ -134,10 +153,29 @@ li:hover {
 	grid-row-gap: 20px;
 }
 
+.modal_body {
+	display: flex;
+	justify-content: center;
+}
+
+.gallery_modal {
+	width: 65%;
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	gap: 30px;
+}
+
+.gallery_modal img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
 .gallery img {
 	width: 100%;
 
 }
+
 #contact {
 	width: 50%;
 margin: auto;
@@ -219,25 +257,76 @@ button {
 
 .totalLoginContainer {
     display: block;
-    border: 1px solid black;
     width: 100vh;
-    height: 75vh;
+    height: 50vh;
+	margin-top: 115px;
 }
 
 .login {
-    padding: auto;
+	text-align: center;
+	margin-bottom: 50px;
 }
 
 .divForm label {
     display: block;
-    
+    margin-bottom: 5px;
+}
+
+.divForm button {
+	margin-top: 30px;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+	width: 240px;
+	height: 45px;
+	
+}
+
+.divForm button:hover {
+	background-color: #1D6154;
+	color: white;
+}
+
+.divForm p {
+	margin-bottom: 30px;
+}
+
+.divForm input {
+	width: 350px;
+	height: 40px;
+	margin-bottom: 15px;
+	border: none;
+	-webkit-box-shadow: 0px 24px 55px -15px rgba(0, 0, 0, 1);
+	-moz-box-shadow: 0px 24px 55px -15px rgba(0, 0, 0, 1);
+	box-shadow: 0px 24px 55px -15px rgba(0, 0, 0, 1);
 }
 
 .divForm {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 2px solid red;
+}
+
+.passwordforgot {
+	color: #1D6154;
+	font-size: medium;
+	margin-top: 30px;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+	text-align: center;
+}
+
+.passwordforgot:visited {
+	color: #1D6154;
+}
+
+a {
+	text-decoration: none;
+}
+
+#feedback {
+	margin-top: 5px;
 }
 
 .editionMode {
@@ -247,14 +336,6 @@ button {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-}
-
-.editionMode .buttonModified {
-	display: none;
-}
-
-.modifButton {
-	border: none;
 }
 
 .overlay {
@@ -268,14 +349,91 @@ button {
 }
 
 .modal {
+	display: none;
 	position: fixed;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	width: 500px;
-	height: 550px;
+	width: 60%;
+	height: 75%;
 	background-color: white;
 	box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 	border-radius: 3px;
 	padding: 20px;
+	z-index: 9999;
+}
+
+.modalClose {
+	position: absolute;
+	top: 8px;
+	right: 8px;
+	cursor: pointer;
+	transition: 0.3s all ease-in-out;
+}
+
+.modalClose {
+	width: 20px;
+	height: 20px;
+	border: none;
+}
+
+.modalClose:hover {
+	transform: rotate(360deg);
+}
+
+.modal_header h2 {
+	font-size: 30px;
+}
+
+.icon-trash {
+	position: absolute;
+}
+
+.container_modal_footer {
+	display: flex;
+	justify-content: center;
+}
+
+.fa-pen-to-square {
+	margin-right: 10px;
+}
+
+.addPhoto {
+	margin-top: 40px;
+}
+
+hr {
+	margin-top: 85px;
+	width: 530px;
+}
+
+a:visited {
+	color: black;
+}
+
+.figure {
+	position: relative;
+}
+
+.trash {
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin: 6px;
+	cursor: pointer;
+	color: white;
+
+}
+
+.trash-container {
+	width: 25px;
+	height: 25px;
+	border-radius: 5px;
+	background: black;
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	display: flex;
+	align-items: center;
+	margin: 0;
 }

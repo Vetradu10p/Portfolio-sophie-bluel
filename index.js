@@ -11,11 +11,13 @@ const dernierElement = document.querySelector(".gallery");
 const divElement = document.createElement("div");
 divElement.className = "container";
 
-premierElement.parentNode.insertBefore(divElement, dernierElement);
+// premierElement.parentNode.insertBefore(divElement, dernierElement);
+dernierElement.insertAdjacentElement("beforebegin", divElement);
 
 // Afficher travaux
 const sectionFiches = document.querySelector(".gallery");
 const portfolioElement = document.querySelector(".gallery");
+const modalImageElement = document.querySelector(".gallery_modal");
 
 function afficherTravaux(travaux) {
   for (let i = 0; i < travaux.length; i++) {
@@ -28,8 +30,50 @@ function afficherTravaux(travaux) {
     projetElement.appendChild(imageElement);
     projetElement.appendChild(titreElement);
     sectionFiches.appendChild(projetElement);
+
+    afficherTravauxModal(imageElement);
   }
+
+  const modalFooter = document.querySelector(".modal_footer");
+  const ajouterPhotoBouton = document.createElement("button");
+  ajouterPhotoBouton.textContent = "Ajouter une photo";
+
+  ajouterPhotoBouton.addEventListener("click", () => {
+    modalFooter.appendChild(ajouterPhotoBouton);
+    formulaireImage();
+  });
+
+  modalFooter.appendChild(ajouterPhotoBouton);
 }
+
+function afficherTravauxModal(image) {
+  const modalImageElement = document.querySelector(".gallery_modal");
+  const imageModal = image.cloneNode(true);
+
+  const iconContainer = document.createElement("div");
+  iconContainer.classList.add("icon-container");
+  iconContainer.style.position = "absolute";
+  iconContainer.style.top = "0";
+  iconContainer.style.right = "0";
+
+  const trashIcon = document.createElement("img");
+  trashIcon.src = "./assets/icons/trash.svg";
+  trashIcon.alt = "icon trash";
+  trashIcon.style.width = "20px";
+
+  iconContainer.appendChild(trashIcon);
+
+  const containerIconImage = document.createElement("div");
+  containerIconImage.classList.add("image-container");
+  containerIconImage.style.position = "relative";
+  containerIconImage.style.display = "inline-block";
+
+  containerIconImage.appendChild(imageModal);
+  containerIconImage.appendChild(iconContainer);
+
+  modalImageElement.appendChild(containerIconImage);
+}
+
 afficherTravaux(travaux);
 
 //  Création bouton "Tous"
@@ -98,6 +142,13 @@ buttons.forEach((button) => {
   button.addEventListener("click", clickedButton);
 });
 
+function ajouterImage(imageUrl) {
+  const nouvelleImage = document.createElement("img");
+  nouvelleImage.src = imageUrl;
+
+  const sectionFiches = document.querySelector(".gallery");
+  sectionFiches.appendChild(nouvelleImage);
+}
 // Connexion
 document.addEventListener("DOMContentLoaded", function () {
   const identifiants = window.localStorage.getItem("userId");
@@ -108,6 +159,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (identifiants != "" && password != "") {
       status = "connected";
+      console.log(password);
     } else {
       status = "not connected";
     }
@@ -121,4 +173,66 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-// Modal + Formulaire
+function formulaireImage() {
+  const galleryModal = document.querySelector(".gallery_modal");
+  galleryModal.innerHTML = "";
+
+  const formulaire = document.createElement("form");
+  formulaire.enctype = "multipart/form-data";
+
+  const inputFichier = document.createElement("input");
+  inputFichier.type = "file";
+  inputFichier.accept = "image/*";
+
+  const inputTitre = document.createElement("input");
+  inputTitre.type = "text";
+  inputTitre.placeholder = "Titre";
+  inputTitre.name = "titre";
+
+  const inputCategorie = document.createElement("input");
+  inputCategorie.type = "text";
+  inputCategorie.placeholder = "Catégorie";
+  inputCategorie.name = "categories";
+
+  const boutonAjouter = document.createElement("button");
+  boutonAjouter.textContent = "Valider";
+
+  formulaire.appendChild(inputFichier);
+  formulaire.appendChild(inputTitre);
+  formulaire.appendChild(inputCategorie);
+  formulaire.appendChild(boutonAjouter);
+
+  galleryModal.appendChild(formulaire);
+
+  boutonAjouter.addEventListener("click", async (event) => {
+    event.preventDefault();
+    const fichier = inputFichier.files[0];
+    const titre = inputTitre.value;
+    const categorie = inputCategorie.value;
+
+    if (titre && categorie && fichier) {
+      const formData = new FormData();
+      formData.append("image", fichier);
+      formData.append("titre", titre);
+      formData.append("categorie", categorie);
+
+      try {
+        const response = await fetch("http://localhost:5678/api/works", {
+          method: "POST",
+          body: formData,
+        });
+
+        if (response.ok) {
+          console.log("Image téléchargée");
+        } else {
+          console.log(
+            "Erreur de téléchargement de l'image: ",
+            response.statusText
+          );
+        }
+      } catch (error) {
+        console.error("Erreur lors du téléchargement de l'image: ", error);
+      }
+    }
+  });
+}

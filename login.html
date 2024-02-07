@@ -12,17 +12,18 @@
 	<script defer type="module" src="login.js"></script>
 	</head>
 <body>
-<header>
-	<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
-	<nav>
-		<ul>
-			<li>projets</li>
-			<li>contact</li>
-			<li><a href="">login</a></li>
-			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
-		</ul>
-	</nav>
-</header>
+	<header>
+		<div class="original">
+		<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
+		<nav>
+			<ul>
+				<li><a href="index.html">projets</a></li>
+				<li>contact</li>
+				<li><a href="login.html">login</a></li>
+				<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
+			</ul>
+		</nav>
+	</header>
 <main class="loginMain">
 <div class="totalLoginContainer">
     <h2 class="login">Log in</h2>
@@ -37,6 +38,7 @@
                     <input type="password" id="passwordLogin" name="password" minlength="5" maxlength="10"  />
                 </p>
                 <button type="button" class="seConnecterLogin" id="buttonLogin">Se connecter</button>
+				<p class="passwordforgot"><a href="#">Mot de passe oublié</a></p>
 				<p id="feedback" class="formFeedback">Feeback</p>
     		</form>
 </div>

@@ -10,10 +10,12 @@
 	<meta name="description" content="">
 	<script src="https://kit.fontawesome.com/8edb3563b5.js" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="./assets/style.css">
-	<script defer type="module" src="index.js"></script>
+	<script defer type="module" src="admin.js"></script>
 	</head>
 <body>
 <header>
+	<nav class="editionMode"><i class="fa-regular fa-pen-to-square"></i>Mode édition</nav>
+	</div>
 	<div class="original">
 	<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
 	<nav>
@@ -38,7 +40,33 @@
 		</article>
 	</section>
 	<section id="portfolio">
-		<h2 class="title">Mes Projets</h2>
+        <div class="projets-container">
+		    <h2 class="title">Mes Projets</h2>
+			<!-- <i class="fa-regular fa-pen-to-square"></i> -->
+            <button class="editionMode"><i class="fa-regular fa-pen-to-square"></i>modifier</button>
+        </div>
+			<div class="overlay"></div>
+			<div class="modal">
+				<div class="modalClose">
+					<i class="fa-solid fa-xmark"></i>
+				</div>
+				<div class="modal_header">
+					<h2 class="modalTitle">Galerie photo</h2>
+				</div>
+				
+				<div class="modal_body">
+					<div class="gallery_modal">
+						
+					</div>
+				</div>
+                <hr>
+				<div class="container_modal_footer">
+					<div class="modal_footer">
+                        <button class="addPhoto">Ajouter une photo</button>
+					</div>
+				</div>
+			</div>
+		</div>
 		<div class="gallery">
 		</div>
 	</section>
