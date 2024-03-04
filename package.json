@@ -1,0 +1,25 @@
+{
+  "name": "FrontEnd",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "live-server": "^1.2.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "live-server src --verbose",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vetradu10p/Portfolio-sophie-bluel.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Vetradu10p/Portfolio-sophie-bluel/issues"
+  },
+  "homepage": "https://github.com/Vetradu10p/Portfolio-sophie-bluel#readme"
+}

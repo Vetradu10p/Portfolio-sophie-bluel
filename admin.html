@@ -40,7 +40,7 @@
                         <p>jpg, png : 4mo max</p>
                     </div>
                 </div>
-                <form class="add" action="#" method="newpost">
+                <form class="add" id="addWorkForm" method="newpost">
                     <label for="titre">Titre</label>
                     <input type="text" name="titre" id="titre" onchange="btndisabled()">
                     <label for="categorie">Catégorie</label>
@@ -99,7 +99,7 @@
 			<input type="text" name="name" id="name">
 			<label for="email">Email</label>
 			<input type="email" name="email" id="email">
-			<input type="submit" value="Envoyer">
+			<input  class="btn_submit_form" type="submit" value="Envoyer">
 		</form>
 	</section>
 </main>
@@ -112,6 +112,6 @@
 	</nav>
 </footer>
 
-<script src="admin.js"></script>
+<script src="./assets/js/admin.js"></script>
 </body>
 </html>
